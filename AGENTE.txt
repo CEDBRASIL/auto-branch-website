@@ -1,0 +1,12 @@
+Adicionado IDs em todos os botoes e inputs do frontend para facilitar testes automatizados.
+
+Arquivos modificados:
+- VehicleDetails.jsx
+- Employee.jsx
+- VehicleModal.jsx
+- SellModal.jsx
+- CreateBranchModal.jsx
+- Login.jsx (já possuía IDs)
+- UserModal.jsx
+
+Lembrar de manter esse arquivo atualizado com futuras mudanças.

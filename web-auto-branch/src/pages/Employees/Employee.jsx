@@ -48,7 +48,7 @@ function Employee() {
             <Box className={styles.mainBox}>
                 <Flex justify="between">
                     <h1 className={styles.title}>Lista de Funcionários</h1>
-                    {user.roleId !== 3 && (<Button onClick={() => setIsAddModalOpen(true)} ><Plus color="#FFF" height={14} width={14} /> Novo Funcionário</Button>)}
+                    {user.roleId !== 3 && (<Button id="novo-funcionario-button" onClick={() => setIsAddModalOpen(true)} ><Plus color="#FFF" height={14} width={14} /> Novo Funcionário</Button>)}
                 </Flex>
 
                 {loading ? (
@@ -79,10 +79,10 @@ function Employee() {
                                     {user.roleId !== 3 && (
                                         <Table.Cell className={styles.tableCell}>
                                             <Flex gap="1" justify="end">
-                                                <button className={styles.actionButton} onClick={() => openDeleteModal(u)}>
+                                                <button id={`delete-employee-${u.id}`} className={styles.actionButton} onClick={() => openDeleteModal(u)}>
                                                     <Trash width={15} height={15} color="#F3123C" />
                                                 </button>
-                                                <button className={styles.actionButton} onClick={() => openEditModal(u)}>
+                                                <button id={`edit-employee-${u.id}`} className={styles.actionButton} onClick={() => openEditModal(u)}>
                                                     <Edit width={15} height={15} color="#2563EB" />
                                                 </button>
                                             </Flex>
