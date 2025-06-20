@@ -100,6 +100,7 @@ function CreateBranchModal({ open, onOpenChange }) {
                 >
                     <label className="inputLabel">Nome</label>
                     <input
+                        id="nome-branch-input"
                         className="input"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
@@ -113,6 +114,7 @@ function CreateBranchModal({ open, onOpenChange }) {
                     />
                     <label className="inputLabel">Estado</label>
                     <select
+                        id="estado-select"
                         className="input"
                         value={state}
                         onChange={(e) => setState(e.target.value)}
@@ -128,6 +130,7 @@ function CreateBranchModal({ open, onOpenChange }) {
                     </select>
                     <label className="inputLabel">Cidade</label>
                     <input
+                        id="cidade-input"
                         className="input"
                         value={city}
                         onChange={(e) => setCity(e.target.value)}
@@ -141,6 +144,7 @@ function CreateBranchModal({ open, onOpenChange }) {
                     />
                     <label className="inputLabel">CEP</label>
                     <input
+                        id="cep-input"
                         className="input"
                         value={cep}
                         onChange={(e) => handleCepChange(e)}
@@ -155,6 +159,7 @@ function CreateBranchModal({ open, onOpenChange }) {
                     
                     <label className="inputLabel">Número de Contato</label>
                     <input
+                        id="contato-input"
                         className="input"
                         value={phoneNumber}
                         onChange={(e) => handlePhoneChange(e)}
@@ -168,7 +173,7 @@ function CreateBranchModal({ open, onOpenChange }) {
                     />
                     <Flex justify="end">
                         <AlertDialog.Action>
-                            <Button type="submit" className={styles.saveButton}>Salvar</Button>
+                            <Button id="salvar-branch-button" type="submit" className={styles.saveButton}>Salvar</Button>
                         </AlertDialog.Action>
                     </Flex>
                 </form>

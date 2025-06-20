@@ -69,10 +69,10 @@ function VehicleDetails() {
                                     </Flex>
                                     <Flex gap="1">
                                         <Text className={styles.vehiclePrice}>R${Number(vehicle.value).toFixed(0)}</Text>
-                                        <button className={styles.actionButton} onClick={() => setIsDeleteModalOpen(true)}>
+                                        <button id="delete-vehicle-button" className={styles.actionButton} onClick={() => setIsDeleteModalOpen(true)}>
                                             <Trash width={15} height={15} color="#F3123C" />
                                         </button>
-                                        <button className={styles.actionButton} onClick={() => setIsEditModalOpen(true)}>
+                                        <button id="edit-vehicle-button" className={styles.actionButton} onClick={() => setIsEditModalOpen(true)}>
                                             <Edit width={15} height={15} color="#2563EB" />
                                         </button>
                                     </Flex>
@@ -116,7 +116,7 @@ function VehicleDetails() {
                                             </Flex>
                                         </Box>
                                     </div>
-                                    <button className={styles.sellButton} onClick={() => setIsSellModalOpen(true)}>
+                                    <button id="sell-vehicle-button" className={styles.sellButton} onClick={() => setIsSellModalOpen(true)}>
                                         <Text className={styles.buttonText}>VENDER</Text>
                                     </button>
                                 </Flex>
