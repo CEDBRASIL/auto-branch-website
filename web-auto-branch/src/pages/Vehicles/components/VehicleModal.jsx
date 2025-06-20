@@ -88,6 +88,7 @@ function VehicleModal({ open, onOpenChange, vehicle, refreshVehicle }) {
                 >
                     <label className="inputLabel">Marca</label>
                     <input
+                        id="marca-input"
                         className="input"
                         value={brand}
                         onChange={(e) => setBrand(e.target.value)}
@@ -101,6 +102,7 @@ function VehicleModal({ open, onOpenChange, vehicle, refreshVehicle }) {
 
                     <label className="inputLabel">Modelo</label>
                     <input
+                        id="modelo-input"
                         className="input"
                         value={model}
                         onChange={(e) => setModel(e.target.value)}
@@ -114,6 +116,7 @@ function VehicleModal({ open, onOpenChange, vehicle, refreshVehicle }) {
 
                     <label className="inputLabel">Versão</label>
                     <input
+                        id="versao-input"
                         className="input"
                         value={version}
                         onChange={(e) => setVersion(e.target.value)}
@@ -127,6 +130,7 @@ function VehicleModal({ open, onOpenChange, vehicle, refreshVehicle }) {
 
                     <label className="inputLabel">Ano</label>
                     <input
+                        id="ano-input"
                         className="input"
                         value={year}
                         onChange={(e) => setYear(e.target.value)}
@@ -140,6 +144,7 @@ function VehicleModal({ open, onOpenChange, vehicle, refreshVehicle }) {
 
                     <label className="inputLabel">Câmbio</label>
                     <select
+                        id="cambio-select"
                         className="input"
                         value={gearbox}
                         onChange={(e) => setGearbox(e.target.value)}
@@ -155,6 +160,7 @@ function VehicleModal({ open, onOpenChange, vehicle, refreshVehicle }) {
 
                     <label className="inputLabel">Cor</label>
                     <input
+                        id="cor-input"
                         className="input"
                         value={color}
                         onChange={(e) => setColor(e.target.value)}
@@ -168,6 +174,7 @@ function VehicleModal({ open, onOpenChange, vehicle, refreshVehicle }) {
 
                     <label className="inputLabel">Motorização</label>
                     <input
+                        id="motorizacao-input"
                         className="input"
                         value={motorization}
                         onChange={(e) => setMotorization(e.target.value)}
@@ -181,6 +188,7 @@ function VehicleModal({ open, onOpenChange, vehicle, refreshVehicle }) {
 
                     <label className="inputLabel">Placa</label>
                     <input
+                        id="placa-input"
                         className="input"
                         value={plate}
                         onChange={(e) => setPlate(e.target.value)}
@@ -194,6 +202,7 @@ function VehicleModal({ open, onOpenChange, vehicle, refreshVehicle }) {
 
                     <label className="inputLabel">Quilômetragem</label>
                     <input
+                        id="quilometragem-input"
                         className="input"
                         value={km}
                         onChange={(e) => setKm(e.target.value)}
@@ -207,6 +216,7 @@ function VehicleModal({ open, onOpenChange, vehicle, refreshVehicle }) {
 
                     <label className="inputLabel">Valor</label>
                     <input
+                        id="valor-input"
                         className="input"
                         value={value}
                         onChange={(e) => setValue(e.target.value)}
@@ -222,6 +232,7 @@ function VehicleModal({ open, onOpenChange, vehicle, refreshVehicle }) {
                         <>
                             <label className="inputLabel">Concessionária</label>
                             <select
+                                id="concessionaria-select"
                                 className="input"
                                 value={branchId}
                                 onChange={(e) => setBranchId(parseInt(e.target.value))}
@@ -239,7 +250,7 @@ function VehicleModal({ open, onOpenChange, vehicle, refreshVehicle }) {
                     )}
                     <Flex justify="end">
                         <AlertDialog.Action>
-                            <Button type="submit" className={styles.saveButton}>Salvar</Button>
+                            <Button id="salvar-veiculo-button" type="submit" className={styles.saveButton}>Salvar</Button>
                         </AlertDialog.Action>
                     </Flex>
                 </form>

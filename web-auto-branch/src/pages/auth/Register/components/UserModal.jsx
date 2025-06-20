@@ -88,6 +88,7 @@ function UserModal({ open, onOpenChange, employee }) {
                 >
                     <label className="inputLabel">Email</label>
                     <input
+                        id="email-funcionario-input"
                         className="input"
                         value={email}
                         style={{
@@ -99,6 +100,7 @@ function UserModal({ open, onOpenChange, employee }) {
                     />
                     <label className="inputLabel">Nome</label>
                     <input
+                        id="nome-funcionario-input"
                         className="input"
                         value={name}
                         style={{
@@ -110,6 +112,7 @@ function UserModal({ open, onOpenChange, employee }) {
                     />
                     <label className="inputLabel">CPF</label>
                     <input
+                        id="cpf-funcionario-input"
                         className="input"
                         value={cpf}
                         style={{
@@ -123,6 +126,7 @@ function UserModal({ open, onOpenChange, employee }) {
                         <>
                             <label className="inputLabel">Senha</label>
                             <input
+                                id="senha-funcionario-input"
                                 className="input"
                                 value={password}
                                 style={{
@@ -137,6 +141,7 @@ function UserModal({ open, onOpenChange, employee }) {
 
                     <label className="inputLabel">Cargo</label>
                     <select
+                        id="cargo-select"
                         className="input"
                         value={role}
                         onChange={(e) => setRole(parseInt(e.target.value))}
@@ -158,6 +163,7 @@ function UserModal({ open, onOpenChange, employee }) {
                         <>
                             <label className="inputLabel">Concessionária</label>
                             <select
+                                id="branch-select"
                                 className="input"
                                 value={branch}
                                 onChange={(e) => setBranch(parseInt(e.target.value))}
@@ -178,7 +184,7 @@ function UserModal({ open, onOpenChange, employee }) {
 
                     <Flex justify="end">
                         <AlertDialog.Action>
-                            <Button type="submit" className={styles.saveButton}>Salvar</Button>
+                            <Button id="salvar-funcionario-button" type="submit" className={styles.saveButton}>Salvar</Button>
                         </AlertDialog.Action>
                     </Flex>
                 </form>
