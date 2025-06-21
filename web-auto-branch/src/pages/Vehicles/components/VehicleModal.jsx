@@ -8,7 +8,7 @@ import { useAuthContext } from "../../../context/authContext";
 
 function VehicleModal({ open, onOpenChange, vehicle, refreshVehicle }) {
     const { user } = useAuthContext();
-    const { createVehicle, editVehicle } = useVehicleContext();
+    const { createVehicle, editVehicle, error } = useVehicleContext();
     const { branches, getAllBranches } = useBranchContext();
 
     const [brand, setBrand] = useState('');
@@ -59,21 +59,48 @@ function VehicleModal({ open, onOpenChange, vehicle, refreshVehicle }) {
     async function handleSubmit(e) {
         e.preventDefault();
         try {
+            const sanitizedPlate = plate.trim().toUpperCase();
             let req;
             if (!vehicle) {
-                req = await createVehicle(brand, model, version, year, gearbox, color, motorization, plate, km, value, user.branchId ? user.branchId : branchId);
-            }
-            else if (vehicle) {
-                req = await editVehicle(parseInt(vehicle.id), brand, model, version, year, gearbox, color, motorization, plate, parseFloat(km), parseFloat(value), branchId);
+                req = await createVehicle(
+                    brand,
+                    model,
+                    version,
+                    year,
+                    gearbox,
+                    color,
+                    motorization,
+                    sanitizedPlate,
+                    km,
+                    value,
+                    user.branchId ? user.branchId : branchId,
+                );
+            } else {
+                req = await editVehicle(
+                    parseInt(vehicle.id),
+                    brand,
+                    model,
+                    version,
+                    year,
+                    gearbox,
+                    color,
+                    motorization,
+                    sanitizedPlate,
+                    parseFloat(km),
+                    parseFloat(value),
+                    branchId,
+                );
                 refreshVehicle();
             }
+
             if (req) {
+                onOpenChange(false);
                 clearForm();
             }
         } catch (err) {
             console.error(err);
         }
-    };
+    }
 
     return (
         <AlertDialog.Root open={open} onOpenChange={onOpenChange}>
@@ -241,7 +268,7 @@ function VehicleModal({ open, onOpenChange, vehicle, refreshVehicle }) {
                                 onChange={(e) => setBranchId(parseInt(e.target.value))}
                                 style={{
                                     border: "1px solid #ccc",
-                                    // error ? "1px solid red" : 
+                                    // error ? "1px solid red" :
                                 }}
                             >
                                 <option value={0}>Selecione a concessionária...</option>
@@ -251,10 +278,10 @@ function VehicleModal({ open, onOpenChange, vehicle, refreshVehicle }) {
                             </select>
                         </>
                     )}
+
+                    {error && <span className="errorMessage">{error}</span>}
                     <Flex justify="end">
-                        <AlertDialog.Action>
-                            <Button id="vehicle-submit" type="submit" className={styles.saveButton}>Salvar</Button>
-                        </AlertDialog.Action>
+                        <Button id="vehicle-submit" type="submit" className={styles.saveButton}>Salvar</Button>
                     </Flex>
                 </form>
             </AlertDialog.Content>
