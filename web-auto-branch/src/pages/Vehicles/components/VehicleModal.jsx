@@ -8,7 +8,7 @@ import { useAuthContext } from "../../../context/authContext";
 
 function VehicleModal({ open, onOpenChange, vehicle, refreshVehicle }) {
     const { user } = useAuthContext();
-    const { createVehicle, editVehicle } = useVehicleContext();
+    const { createVehicle, editVehicle, error, success } = useVehicleContext();
     const { branches, getAllBranches } = useBranchContext();
 
     const [brand, setBrand] = useState('');
@@ -251,6 +251,8 @@ function VehicleModal({ open, onOpenChange, vehicle, refreshVehicle }) {
                             </select>
                         </>
                     )}
+                    {error && <span id="vehicle-error" className="errorMessage">{error}</span>}
+                    {success && <span id="vehicle-success" className="successMessage">{success}</span>}
                     <Flex justify="end">
                         <AlertDialog.Action>
                             <Button id="vehicle-submit" type="submit" className={styles.saveButton}>Salvar</Button>
