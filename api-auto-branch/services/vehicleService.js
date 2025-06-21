@@ -1,5 +1,5 @@
 import { updateVehicleCount } from "../models/branchModel.js";
-import { deleteVehicle, insertVehicle, selectAllVehicles, selectAllVehiclesByBranchId, selectVehicleById, updateVehicle } from "../models/vehicleModel.js";
+import { deleteVehicle, insertVehicle, selectAllVehicles, selectAllVehiclesByBranchId, selectVehicleById, selectVehicleByPlate, updateVehicle } from "../models/vehicleModel.js";
 import { AppError } from "../utils/appError.js";
 
 export const getAllVehiclesService = async () => {
@@ -25,6 +25,10 @@ export const getAllVehiclesByBranchIdService = async (branchId) => {
 export const createVehicleService = async ({ brand, model, version, year, gearbox, color, motorization, plate, km, value, branchId }) => {
     if (!brand || !model || !version || !year || !gearbox || !color || !motorization || !plate || !km || !value || !branchId)
         throw new AppError("Preencha os campos corretamente", 400);
+
+    const existingVehicle = await selectVehicleByPlate(plate);
+    if (existingVehicle)
+        throw new AppError("Veículo já cadastrado", 400);
 
     await insertVehicle(brand, model, version, year, gearbox, color, motorization, plate, km, value, branchId);
     if (branchId) {

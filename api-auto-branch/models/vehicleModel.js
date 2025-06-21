@@ -182,6 +182,18 @@ export const selectAllVehiclesByBranchId = async (branchId) => {
     }
 }
 
+
+export const selectVehicleByPlate = async (plate) => {
+    try {
+        const query = `SELECT * FROM vehicles WHERE plate = ?`;
+        const [results] = await db.promise().query(query, [plate]);
+
+        return results.length > 0 ? results[0] : null;
+    } catch (err) {
+        throw new Error("Erro ao buscar veículo por placa no banco de dados");
+    }
+};
+
 export const insertVehicle = async (brand, model, version, year, gearbox, color, motorization, plate, km, value, branchId) => {
     try {
         const query = `INSERT INTO vehicles (brand, model, version, year, gearbox, color, motorization, plate, km, value, branchId) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;

@@ -46,9 +46,9 @@ export const getAllVehiclesByBranchId = async (req, res) => {
 
 export const createVehicle = async (req, res) => {
     try {
-        await createVehicleService(req.body);
+        const result = await createVehicleService(req.body);
         res.status(201).json({
-            message: "Veículo criado com sucesso!"
+            message: result.message
         });
     } catch (err) {
         const status = err.statusCode || 500;

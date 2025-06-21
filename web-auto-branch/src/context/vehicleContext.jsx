@@ -7,6 +7,7 @@ export function VehicleProvider({ children }) {
     const { user } = useAuthContext();
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
+    const [success, setSuccess] = useState("");
     const [vehicles, setVehicles] = useState([]);
 
     async function getAllVehicles() {
@@ -99,6 +100,7 @@ export function VehicleProvider({ children }) {
         try {
             setLoading(true);
             setError(false);
+            setSuccess("");
             const response = await fetch("http://localhost:3000/api/vehicles/", {
                 method: "POST",
                 headers: {
@@ -113,6 +115,7 @@ export function VehicleProvider({ children }) {
             }
 
             setError(false);
+            setSuccess(responseData.message);
             if (user.roleId == 1) {
                 await getAllVehicles();
             } else {
@@ -184,7 +187,7 @@ export function VehicleProvider({ children }) {
     }
 
     return (
-        <VehicleContext.Provider value={{ loading, error, vehicles, getAllVehicles, getVehicleById, getAllVehiclesByBranchId, createVehicle, deleteVehicle, editVehicle }}>
+        <VehicleContext.Provider value={{ loading, error, success, vehicles, getAllVehicles, getVehicleById, getAllVehiclesByBranchId, createVehicle, deleteVehicle, editVehicle }}>
             {children}
         </VehicleContext.Provider>
     )
