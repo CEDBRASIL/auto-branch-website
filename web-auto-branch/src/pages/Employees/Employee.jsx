@@ -7,11 +7,13 @@ import { useAuthContext } from "../../context/authContext";
 import { formatCpf } from "../../utils/formatCpf";
 import DeleteModal from "../../components/DeleteModal";
 import UserModal from "../auth/Register/components/UserModal";
+import ProfileModal from "./components/ProfileModal";
 
 function Employee() {
     const { loading, users, getAllUsers, getAllUsersByBranchId, deleteUser, user } = useAuthContext();
     const [isAddModalOpen, setIsAddModalOpen] = useState(false);
     const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+    const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
     const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
     const [selectedEmployee, setSelectedEmployee] = useState(false);
 
@@ -27,9 +29,13 @@ function Employee() {
     }, []);
 
 
-    function openEditModal(user) {
-        setSelectedEmployee(user);
-        setIsEditModalOpen(true);
+    function openEditModal(userToEdit) {
+        setSelectedEmployee(userToEdit);
+        if (userToEdit.id === user.id) {
+            setIsProfileModalOpen(true);
+        } else {
+            setIsEditModalOpen(true);
+        }
     }
 
     function openDeleteModal(user) {
@@ -96,6 +102,7 @@ function Employee() {
                 )}
             </Box>
             <UserModal open={isEditModalOpen} onOpenChange={setIsEditModalOpen} employee={selectedEmployee} />
+            <ProfileModal open={isProfileModalOpen} onOpenChange={setIsProfileModalOpen} />
             {user.roleId !== 3 && (
                 <>
                     <UserModal open={isAddModalOpen} onOpenChange={setIsAddModalOpen} />
